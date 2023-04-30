@@ -1,0 +1,198 @@
+object frmMain: TfrmMain
+  Left = 0
+  Top = 0
+  Caption = 'SQLite demo'
+  ClientHeight = 480
+  ClientWidth = 424
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  DesignerMasterStyle = 0
+  object ToolBar1: TToolBar
+    Padding.Left = 5.000000000000000000
+    Padding.Top = 5.000000000000000000
+    Padding.Right = 5.000000000000000000
+    Padding.Bottom = 5.000000000000000000
+    Size.Width = 424.000000000000000000
+    Size.Height = 40.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object btnOpenDB: TButton
+      Align = FitRight
+      Position.X = 297.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 127.000000000000000000
+      Size.Height = 35.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Text = 'Conectar'
+      OnClick = btnOpenDBClick
+    end
+  end
+  object Panel1: TPanel
+    Align = Client
+    Size.Width = 424.000000000000000000
+    Size.Height = 440.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object edtNoControl: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Scale
+      TabOrder = 1
+      Position.X = 8.000000000000000000
+      Position.Y = 24.000000000000000000
+      Size.Width = 201.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object edtNombre: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Scale
+      TabOrder = 0
+      Position.X = 8.000000000000000000
+      Position.Y = 64.000000000000000000
+      Size.Width = 337.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object spnEdad: TSpinBox
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Scale
+      TabOrder = 2
+      Cursor = crIBeam
+      Position.X = 8.000000000000000000
+      Position.Y = 186.000000000000000000
+      Size.Width = 137.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object dtmFecha: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Scale
+      TabOrder = 3
+      Position.X = 8.000000000000000000
+      Position.Y = 216.000000000000000000
+      Size.Width = 137.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object BindNavigator1: TBindNavigator
+      Align = Scale
+      Position.X = 8.000000000000000000
+      Position.Y = 264.000000000000000000
+      Size.Width = 376.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      DataSource = BindSourceDB1
+      xRadius = 4.000000000000000000
+      yRadius = 4.000000000000000000
+    end
+    object StatusBar1: TStatusBar
+      Position.Y = 418.000000000000000000
+      ShowSizeGrip = True
+      Size.Width = 424.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 5
+      object lblStatus: TLabel
+        Position.X = 8.000000000000000000
+        Position.Y = 5.000000000000000000
+        Text = 'lblStatus'
+        TabOrder = 0
+      end
+    end
+    object rdbF: TRadioButton
+      Align = Scale
+      GroupName = 'Genre'
+      Position.X = 8.000000000000000000
+      Position.Y = 121.000000000000000000
+      TabOrder = 36
+      Text = 'Femenino'
+      OnClick = rdClick
+    end
+    object rdbM: TRadioButton
+      Align = Scale
+      GroupName = 'Genre'
+      Position.X = 8.000000000000000000
+      Position.Y = 94.000000000000000000
+      TabOrder = 37
+      Text = 'Masculino'
+      OnClick = rdClick
+    end
+  end
+  object tblAlumno: TFDTable
+    Connection = db
+    TableName = 'alumno'
+    Left = 104
+    Top = 360
+  end
+  object db: TFDConnection
+    Params.Strings = (
+      
+        'Database=C:\isc\Octavo semestre\ProgramacionMovil\Projects\SQLit' +
+        'eDemo\escolar.db'
+      'DriverID=SQLite'
+      'LockingMode=Normal')
+    LoginPrompt = False
+    Left = 24
+    Top = 360
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = tblAlumno
+    ScopeMappings = <>
+    Left = 200
+    Top = 224
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 220
+    Top = 157
+    object LinkControlToField1: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'noControl'
+      Control = edtNoControl
+      Track = False
+    end
+    object LinkControlToField2: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'nombre'
+      Control = edtNombre
+      Track = False
+    end
+    object LinkControlToField3: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'edad'
+      Control = spnEdad
+      Track = True
+    end
+    object LinkControlToField4: TLinkControlToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'fechIngreso'
+      Control = dtmFecha
+      Track = False
+    end
+    object LinkPropertyToFieldIsChecked: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'sexo'
+      Component = rdbM
+      CustomFormat = 'IfThen(ToStr(%s)="M",True,False)'
+      ComponentProperty = 'IsChecked'
+    end
+    object LinkPropertyToFieldIsChecked2: TLinkPropertyToField
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      FieldName = 'sexo'
+      Component = rdbF
+      CustomFormat = 'IfThen(ToStr(%s)="F",True,False)'
+      ComponentProperty = 'IsChecked'
+    end
+  end
+end
