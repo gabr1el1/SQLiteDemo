@@ -96,7 +96,7 @@ begin
  // ubicacion de la bd
  {$IF DEFINED(MSWINDOWS)}
  // windows
- dbFileName := '.\escolar.db';
+ dbFileName := '..\..\escolar.db';
  {$ELSE}
    // Android, iOS, Mac
    dbFileName := TPath.Combine(TPath.GetDocumentsPath,'escolar.db');
