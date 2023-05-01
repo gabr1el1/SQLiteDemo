@@ -95,8 +95,8 @@ begin
  // configurar el componente de conexion FDConnection
  // ubicacion de la bd
  {$IF DEFINED(MSWINDOWS)}
- // windows
- dbFileName := '..\..\escolar.db';
+   // windows
+   dbFileName := '..\..\escolar.db';
  {$ELSE}
    // Android, iOS, Mac
    dbFileName := TPath.Combine(TPath.GetDocumentsPath,'escolar.db');
